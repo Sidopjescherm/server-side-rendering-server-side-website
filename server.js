@@ -5,8 +5,6 @@ import express from 'express'
 // Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
 import { Liquid } from 'liquidjs';
 
-
-console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Doe een fetch naar de data die je nodig hebt
 // const apiResponse = await fetch('...')
 
@@ -46,6 +44,14 @@ app.post('/', async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
   response.redirect(303, '/')
+})
+
+app.get('/users', async function (request, response) {
+  const userResponse = await fetch('https://fdnd-agency.directus.app/items/tm_users');
+  const userResponseJSON = await userResponse.json();
+
+  console.log(userResponseJSON)
+  
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
