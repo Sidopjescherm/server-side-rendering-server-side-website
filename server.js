@@ -55,6 +55,8 @@ app.get('/user/:id', async function (request, response) {
   console.log(userResponseJSON)
   
   response.render('users.liquid', {user: userResponseJSON})
+
+  response.render('users.liquid', {users: userResponseJSON.data})
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
