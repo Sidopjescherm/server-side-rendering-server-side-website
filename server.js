@@ -46,17 +46,13 @@ app.post('/', async function (request, response) {
   response.redirect(303, '/')
 })
 
-app.get('/users', async function (request, response) {
-  const userResponse = await fetch('https://fdnd-agency.directus.app/items/tm_users');
 app.get('/user/:id', async function (request, response) {
-  const userResponse = await fetch('https://fdnd-agency.directus.app/items/tm_users' + request.params.id);
+  const userResponse = await fetch(`https://fdnd-agency.directus.app/items/tm_users?fields=email,name,password,id&filter={"id":"${request.params.id}"}`);
   const userResponseJSON = await userResponse.json();
 
-  console.log(userResponseJSON)
-  
-  response.render('users.liquid', {user: userResponseJSON})
+  // console.log(userResponseJSON)
 
-  response.render('users.liquid', {users: userResponseJSON.data})
+  response.render('users.liquid', { user: userResponseJSON.data[0] })
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
