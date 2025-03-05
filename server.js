@@ -48,10 +48,13 @@ app.post('/', async function (request, response) {
 
 app.get('/users', async function (request, response) {
   const userResponse = await fetch('https://fdnd-agency.directus.app/items/tm_users');
+app.get('/user/:id', async function (request, response) {
+  const userResponse = await fetch('https://fdnd-agency.directus.app/items/tm_users' + request.params.id);
   const userResponseJSON = await userResponse.json();
 
   console.log(userResponseJSON)
   
+  response.render('users.liquid', {user: userResponseJSON})
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
