@@ -1,0 +1,12 @@
+.active{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: blueviolet;
+}
+
+.error{
+    text-align: center;
+
+    h1{
+        color: red;
+    }
+}

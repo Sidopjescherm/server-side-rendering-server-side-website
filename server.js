@@ -55,6 +55,18 @@ app.get('/user/:id', async function (request, response) {
   response.render('users.liquid', { user: userResponseJSON.data[0] })
 })
 
+app.get('/buddy/:animal', async function (request, response) {
+  const animalResponse = await fetch (`https://fdnd-agency.directus.app/items/tm_buddy/?fields=name,animal,id&filter={"animal":"${request.params.animal}"}`);
+  const animalResponseJSON = await animalResponse.json();
+
+  // console.log(animalResponseJSON)
+  response.render('animal.liquid', { buddy: animalResponseJSON.data[0], huidigePagina: request.path })
+})
+
+app.use((req, res, next) => {
+  res.status(404).render('404.liquid')
+})
+
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000, als dit ergens gehost wordt, is het waarschijnlijk poort 80
 app.set('port', process.env.PORT || 8000)
@@ -64,3 +76,4 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
+

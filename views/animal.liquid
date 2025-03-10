@@ -1,0 +1,15 @@
+{% render 'partials/head.liquid' %}
+<nav>
+    <a href="/"{% if huidigePagina == '/' %} class="active" {% endif %}>Home</a>
+    <a href="/alle-dieren"{% if huidigePagina == '/alle-dieren' %} class="active" {% endif %}>Alle dieren</a>
+    <a href="/contact"{% if huidigePagina == '/contact' %} class="active" {% endif %}>Contact</a>
+    <a href="/buddy/Rat"{% if huidigePagina == '/buddy/Rat' %} class="active" {% endif %}>Rat</a>
+    <a href="/buddy/Duck"{% if huidigePagina == '/buddy/Duck' %} class="active" {% endif %}>Duck</a>
+    <a href="/buddy/Penguin"{% if huidigePagina == '/buddy/Penguin' %} class="active" {% endif %}>Penguin</a>
+</nav>
+
+<h1>{{ buddy.name }}</h1>
+
+<p>hoi</p>
+
+<p>{{ buddy.animal }}</p>
