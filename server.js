@@ -60,10 +60,10 @@ app.get('/buddy/:animal', async function (request, response) {
   const animalResponseJSON = await animalResponse.json();
 
   // console.log(animalResponseJSON)
-  response.render('animal.liquid', { buddy: animalResponseJSON.data[0], huidigePagina: request.path })
+  response.render('animal.liquid', { buddy: animalResponseJSON.data[0], huidigePagina: request.path})
 })
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).render('404.liquid')
 })
 
