@@ -1,0 +1,10 @@
+{% render 'partials/head.liquid' %}
+
+<audio controls src="{{ audio.audio_file }}"></audio>
+
+<track
+    default
+    kind="captions"
+    srclang="en"
+    src="{{ audio.transcript }}"
+/>

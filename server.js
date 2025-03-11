@@ -63,6 +63,14 @@ app.get('/buddy/:animal', async function (request, response) {
   response.render('animal.liquid', { buddy: animalResponseJSON.data[0], huidigePagina: request.path})
 })
 
+app.get('/audio/:audio_id', async function (request, response) {
+  const audioResponse = await fetch (`https://fdnd-agency.directus.app/items/tm_audio/?fields=audio_id,voice_colours,speaker_profile,transcript,audio_file&filter={"audio_id":"${request.params.audio_id}"}`);
+  const audioResponseJSON = await audioResponse.json();
+  // console.log(audioResponseJSON.data)
+
+  response.render('audio_id.liquid', {audio: audioResponseJSON.data})
+})
+
 app.use((req, res) => {
   res.status(404).render('404.liquid')
 })
