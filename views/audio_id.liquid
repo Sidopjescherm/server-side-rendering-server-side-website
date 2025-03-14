@@ -1,11 +1,14 @@
 {% render 'partials/head.liquid' %}
 <audio controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
+<video controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
 <track
     default
     kind="captions"
     srclang="en"
     src="{{ audio.transcript }}"
+    src="files/{{ audio.transcript }}"
 />
 </audio>
+</video>
 <h2>{{ audio.voice_colours |  join: ', '  }}</h2>
 
