@@ -2,9 +2,13 @@
 
 <audio controls src="{{ audio.audio_file }}"></audio>
 
+<audio controls src="https://fdnd-agency.directus.app/assets/{{ audio.audio_file }}">
 <track
     default
     kind="captions"
     srclang="en"
     src="{{ audio.transcript }}"
-/>
+/>/>
+</audio>
+<h2>{{ audio.voice_colours |  join: ', '  }}</h2>
+
